@@ -986,7 +986,7 @@ public class Parser extends BaseParser<Object> implements Extensions {
         return NodeSequence(
                 NonindentSpace(), Label(), push(ref.setAndGet(new ReferenceNode(popAsNode()))),
                 ':', Spn1(), RefSrc(ref),
-                Sp(), Optional(RefTitle(ref)),
+                Optional(Sequence(OneOrMore(Spacechar()),RefTitle(ref))),
                 Sp(), Newline(),
                 ZeroOrMore(BlankLine()),
                 references.add(ref.get())
